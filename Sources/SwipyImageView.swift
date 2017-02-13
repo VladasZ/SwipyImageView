@@ -13,7 +13,7 @@ let DOTS_SPACING:CGFloat = 9
 let DOT_SIZE:CGFloat = 8
 let UNSELECTED_DOT_ALPHA:CGFloat = 0.32
 
-class SwipyImageView : UIView, UIScrollViewDelegate {
+public class SwipyImageView : UIView, UIScrollViewDelegate {
     
     static var fromNib:SwipyImageView {
         
