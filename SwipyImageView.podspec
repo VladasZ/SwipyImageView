@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name           = 'SwipyImageView'
-s.version        = '0.1'
+s.version        = '0.2'
 s.summary        = "Mini gallery."
 s.homepage       = "https://github.com/VladasZ/SwipyImageView"
 s.author         = { 'Vladas Zakrevskis' => '146100@gmail.com' }
