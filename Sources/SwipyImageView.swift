@@ -29,6 +29,7 @@ public class SwipyImageView : UIView, UIScrollViewDelegate {
     //MARK: - Variables
     
     private var dots = [UIView]()
+    private var imageViews = [UIImageView]()
     
     private var expectedIndex:Int {
         get {
@@ -52,6 +53,7 @@ public class SwipyImageView : UIView, UIScrollViewDelegate {
                 imageView.contentMode = .scaleAspectFit
                 imageView.image = images[i]
                 imageView.x = self.width * i.CGFloat
+                imageViews.append(imageView)
                 
                 scrollView.addSubview(imageView)
             }
@@ -78,11 +80,26 @@ public class SwipyImageView : UIView, UIScrollViewDelegate {
         return dot
     }
     
+    //MARK: - Layout
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        scrollView.frame = self.frame
+        
+        scrollView.contentSize = CGSize(width: self.width * images.count.CGFloat, height: 0)
+        
+        for i in 0...images.count - 1 {
+            
+            imageViews[i].frame = CGRect(self.width * i.CGFloat, 0, self.width, self.height)
+        }
+    }
+    
     //MARK: - UIScrollViewDelegate
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
-        dots.enumerate { dot in dot.alpha = UNSELECTED_DOT_ALPHA }
+        dots.forEach { dot in dot.alpha = UNSELECTED_DOT_ALPHA }
         dots[expectedIndex].alpha = 1
     }
     
