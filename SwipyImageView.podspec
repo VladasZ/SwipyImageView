@@ -9,6 +9,5 @@ s.ios.deployment_target = '9.0'
 s.source_files   = 'Sources/*.swift'
 s.source_files   = 'Sources/*.xib'
 s.license        = 'MIT'
-#s.dependency     'LazySwift', git: 'https://github.com/VladasZ/LazySwift.git'
 
 end

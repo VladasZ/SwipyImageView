@@ -4,14 +4,13 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="SwipyImageView" id="iN0-l3-epB" customClass="SwipyImageView" customModule="SwipyImageView" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="SwipyImageView" id="iN0-l3-epB" customClass="SwipyImageView" customModule="Vape" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -22,7 +21,7 @@
                     </connections>
                 </scrollView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="v05-5I-fcX">
-                    <rect key="frame" x="0.0" y="346" width="375" height="8"/>
+                    <rect key="frame" x="0.0" y="361" width="375" height="8"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="375" id="3pc-W4-3gF"/>
                         <constraint firstAttribute="height" constant="8" id="fbC-or-N2L"/>
@@ -31,12 +30,12 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="GlQ-O6-kOI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1Hl-5W-mOH"/>
                 <constraint firstItem="v05-5I-fcX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="65u-KT-O2D"/>
-                <constraint firstItem="GlQ-O6-kOI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Gc8-ea-yMY"/>
-                <constraint firstAttribute="trailing" secondItem="GlQ-O6-kOI" secondAttribute="trailing" id="UWX-2Z-PL9"/>
-                <constraint firstItem="GlQ-O6-kOI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Yo6-nQ-A4h"/>
-                <constraint firstAttribute="bottom" secondItem="v05-5I-fcX" secondAttribute="bottom" constant="21" id="kFW-ip-T25"/>
-                <constraint firstAttribute="bottom" secondItem="GlQ-O6-kOI" secondAttribute="bottom" id="t8B-aX-Ir0"/>
+                <constraint firstAttribute="bottom" secondItem="GlQ-O6-kOI" secondAttribute="bottom" id="9jp-lp-f2c"/>
+                <constraint firstAttribute="trailing" secondItem="GlQ-O6-kOI" secondAttribute="trailing" id="DQT-Cr-FAl"/>
+                <constraint firstItem="GlQ-O6-kOI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="GP0-Th-Vzs"/>
+                <constraint firstAttribute="bottom" secondItem="v05-5I-fcX" secondAttribute="bottom" constant="6" id="kFW-ip-T25"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

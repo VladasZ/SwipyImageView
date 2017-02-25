@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LazySwift
 
 let DOTS_SPACING:CGFloat = 9
 let DOT_SIZE:CGFloat = 8
@@ -33,14 +32,14 @@ public class SwipyImageView : UIView, UIScrollViewDelegate {
     
     private var expectedIndex:Int {
         get {
-            return Int(scrollView.contentOffset.x / self.width)
+            return Int(scrollView.contentOffset.x / frame.size.width)
         }
     }
     
     var images:[UIImage]! = nil {
         didSet {
             
-            scrollView.contentSize = CGSize(width: self.width * images.count.CGFloat, height: 0)
+            scrollView.contentSize = CGSize(width: frame.size.width * CGFloat(images.count), height: 0)
             
             for i in 0...images.count - 1 {
                 
@@ -49,10 +48,14 @@ public class SwipyImageView : UIView, UIScrollViewDelegate {
                 stackView.addArrangedSubview(dot)
                 dots.append(dot)
                 
-                let imageView = UIImageView(self.frame.withZeroOrigin)
+                let imageView = UIImageView(frame: CGRect(x: 0,
+                                                          y: 0,
+                                                          width: self.frame.size.width,
+                                                          height: self.frame.size.height))
+                
                 imageView.contentMode = .scaleAspectFit
                 imageView.image = images[i]
-                imageView.x = self.width * i.CGFloat
+                imageView.frame.origin.x = self.frame.size.width * CGFloat(i)
                 imageViews.append(imageView)
                 
                 scrollView.addSubview(imageView)
@@ -66,14 +69,15 @@ public class SwipyImageView : UIView, UIScrollViewDelegate {
     
     private func calculateStackWidth() -> CGFloat {
         
-        let dotsSpacing = DOTS_SPACING * (images.count - 1).CGFloat
-        let dotsSize    = DOT_SIZE     * images.count.CGFloat
+        let dotsSpacing = DOTS_SPACING * CGFloat(images.count - 1)
+        let dotsSize    = DOT_SIZE     * CGFloat(images.count)
         return dotsSpacing + dotsSize
     }
     
     private var newDot:UIView {
         
-        let dot = UIView(width: DOT_SIZE, height: DOT_SIZE).circle()
+        let dot = UIView(frame: CGRect(x:0, y:0, width: DOT_SIZE, height: DOT_SIZE))
+        dot.circle()
         dot.backgroundColor = UIColor.black
         dot.alpha = UNSELECTED_DOT_ALPHA
         
@@ -87,11 +91,15 @@ public class SwipyImageView : UIView, UIScrollViewDelegate {
         
         scrollView.frame = self.frame
         
-        scrollView.contentSize = CGSize(width: self.width * images.count.CGFloat, height: 0)
+        scrollView.contentSize = CGSize(width: self.frame.size.width * CGFloat(images.count),
+                                        height: 0)
         
         for i in 0...images.count - 1 {
             
-            imageViews[i].frame = CGRect(self.width * i.CGFloat, 0, self.width, self.height)
+            imageViews[i].frame = CGRect(x:self.frame.size.width * CGFloat(i),
+                                         y:0,
+                                         width:self.frame.size.width,
+                                         height:self.frame.size.height)
         }
     }
     
